@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="Generator" content="ECSHOP v2.7.3">
+    <meta charset="utf-8">
+    <title>我的网站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link href="http://www.baixingsenlin.com/mobile/themes/ocailong_com/images/touch-icon.png" rel="apple-touch-icon-precomposed">
+    <link href="http://www.baixingsenlin.com/mobile/themes/ocailong_com/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/TouchSlide.js"></script>
+    <script type="text/javascript" src="js/jquery_002.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/ectouch.js"></script>
+    <script type="text/javascript">
+      
+  function getLocalTime(nS) {
+    return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/, ' ');
+  }
+  function limitCount() {
+    var a = limitCount.doms = limitCount.doms || $("#JS_limit_table div.JS_leaveTime");
+    a.each(function() {
+      var c = $(this);
+      var b = c[0]._timeline = c[0]._timeline || c.data("timeline");
+      c.html(limitFormatTime(b - limitCount.unixTime));
+    });
+  }
+  function limitFormatTime(e) {
+    e=e+28800;//LJC add
+    if (e < 0) {
+      e = 0;
+    }
+    var NowTime = new Date();
+    var t = e * 1000 - NowTime.getTime();
+    /*var d=Math.floor(t/1000/60/60/24);
+        t-=d*(1000*60*60*24);
+        var h=Math.floor(t/1000/60/60);
+        t-=h*60*60*1000;
+        var m=Math.floor(t/1000/60);
+        t-=m*60*1000;
+        var s=Math.floor(t/1000);*/
+    var d = Math.floor(t / 1000 / 60 / 60 / 24);
+    if (d<10){
+       d = '0' + d;
+    }
+    var h = Math.floor(t / 1000 / 60 / 60 % 24);
+    if (h<10){
+       h = '0' + h;
+    }
+    var m = Math.floor(t / 1000 / 60 % 60);
+    if (m<10){
+       m = '0' + m;
+    }
+    var s = Math.floor(t / 1000 % 60);
+    if (s<10){
+       s = '0' + s;
+    }
+    if (t < 0) {
+    return "活动结束";
+    }
+    return '<em>'+ d + '</em>天' + '<em>' + h + '</em>时<em>' + m + '</em>分<em>' + s + '</em>秒';
+  }
+  function _COMMON_UNIX_TIME() {
+    limitCount.unixTime = 0;
+    setInterval(limitCount, 1000);
+  }
+  _COMMON_UNIX_TIME();
+
+    </script>
+    <style>
+      * {
+        outline: 0;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box
+      }
+
+      .user_top_goods {
+        height: 5rem;
+        overflow: hidden;
+        background: #ffbf6b;
+        position: relative
+      }
+
+      .user_top_goods dt {
+        float: left;
+        margin: 0.8rem 0.8rem 0;
+        text-align: center;
+        position: relative;
+        width: 3.7rem;
+        height: 3.7rem;
+        border-radius: 3.7rem;
+        padding: 0.15rem;
+        background: #FFFFFF
+      }
+
+      .user_top_goods dt img {
+        width: 3.7rem;
+        height: 3.7rem;
+        border-radius: 3.7rem;
+      }
+
+      .guanzhu {
+        background-color: #ffbf6b;
+      }
+
+      .guanzhu {
+        color: #fff;
+        border: 0;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        width: 100%;
+        -webkit-box-flex: 1;
+        display: block;
+        -webkit-user-select: none;
+        font-size: 0.9rem;
+      }
+
+      #cover2 {
+        background-color: #333333;
+        display: none;
+        left: 0;
+        opacity: 0.8;
+        position: absolute;
+        top: 0;
+        z-index: 1000;
+      }
+
+      #share_weixin, #share_qq {
+        right: 10px;
+        top: 2px;
+        width: 260px;
+      }
+
+      #share_weixin, #share_qq, #share_qr {
+        display: none;
+        position: fixed;
+        z-index: 3000;
+      }
+
+      #share_weixin img, #share_qq img {
+        height: 165px;
+        width: 260px;
+      }
+
+      .button_3 {
+        background-color: #EEEEEE;
+        border: 1px solid #666666;
+        color: #666666;
+        font-size: 16px;
+        line-height: 20px;
+        padding: 10px 0;
+        text-align: center;
+      }
+
+      #share_weixin button, #share_qq button {
+        margin-top: 25px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="menu" style="" class="mm-menu mm-horizontal mm-ismenu">
+      <ul class="mm-list mm-panel mm-opened mm-current" id="mm-m0-p0">
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p1"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=141">农产品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p3"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=149">数码/电子电器 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p7"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=148">食品/保健/酒 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p13"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=150">化妆品/个人护理 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p16"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=143">日用品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p19"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=154">皮具/箱包 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p22"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=161">进口商品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p27"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=5">服饰/内衣 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p32"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=169">厨具/家具 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p35"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=172">鞋帽/饰品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p38"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=176">床上用品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p1">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">农产品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p2"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=166">蜂蜜 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p2">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p1">蜂蜜 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p3">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">数码/电子电器 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p4"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=151">生活家电 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p5"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=152">手机数码 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p6"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=168">电子产品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p4">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p3">生活家电 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p5">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p3">手机数码 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p6">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p3">电子产品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p7">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">食品/保健/酒 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p8"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=6">干货 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p9"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=9">食品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p10"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=132">酒水饮料 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p11"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=135">家庭保健 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p12"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=139">粮油食品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p8">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p7">干货 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p9">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p7">食品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p10">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p7">酒水饮料 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p11">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p7">家庭保健 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p12">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p7">粮油食品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p13">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">化妆品/个人护理 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p14"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=153">个人护理 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p15"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=167">化妆品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p14">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p13">个人护理 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p15">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p13">化妆品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p16">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">日用品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p17"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=144">日用 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p18"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=145">百货 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p17">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p16">日用 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p18">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p16">百货 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p19">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">皮具/箱包 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p20"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=155">皮具 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p21"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=156">箱包 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p20">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p19">皮具 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p21">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p19">箱包 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p22">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">进口商品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p23"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=162">零食 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p24"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=163">生活用品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p25"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=164">酒类 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p26"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=165">化妆品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p23">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p22">零食 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p24">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p22">生活用品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p25">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p22">酒类 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p26">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p22">化妆品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p27">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">服饰/内衣 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p28"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=142">内衣 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p29"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=158">女装 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p30"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=159">男装 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p31"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=160">童装 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p28">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p27">内衣 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p29">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p27">女装 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p30">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p27">男装 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p31">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p27">童装 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p32">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">厨具/家具 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p33"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=170">厨具 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p34"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=171">家具 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p33">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p32">厨具 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p34">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p32">家具 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p35">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">鞋帽/饰品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p36"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=173">饰品 </a>
+        </li>
+        <li>
+          <a class="mm-subopen" href="#mm-m0-p37"></a>
+          <a href="http://www.baixingsenlin.com/mobile/category.php?id=174">鞋帽 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p36">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p35">饰品 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p37">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p35">鞋帽 </a>
+        </li>
+      </ul>
+      <ul class="mm-list mm-panel" id="mm-m0-p38">
+        <li class="mm-subtitle">
+          <a class="mm-subclose" href="#mm-m0-p0">床上用品 </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="mm-page">
+      <div id="page">
+      <!--	********头部************-->
+        <header id="header">
+          <div class="header_l">
+            <a class="ico_02" href="#menu">菜单栏 </a>
+          </div>
+          <h1>   
+          	<i>󰅮</i>
+          	<input type="text" placeholder="搜索想要的商品"  style="width: 200px;height:30px;  border-radius: 5px"> </h1>
+          <div class="header_r">
+            <a class="ico_01" href="http://www.baixingsenlin.com/mobile/flow.php">购物车 </a>
+          </div>
+        </header>
+      </div>
+      <div id="focus" class="focus region">
+        <div class="hd">
+          <ul>
+            <li class="on"></li>
+          </ul>
+        </div>
+        <div class="bd">
+          <div class="tempWrap" style="overflow:hidden; position:relative;">
+          <!--	************轮播图**********-->
+            <ul style="width: 4098px; position: relative; overflow: hidden; padding: 0px; margin: 0px; transition-duration: 0ms; transform: translateX(-1366px);">
+              <li style="display: table-cell; vertical-align: top; width: 1366px;">
+                <a href="http://www.baixingsenlin.com/mobile/affiche.php?ad_id=1&amp;uri=" target="_blank">
+                  <img src="images/banner1.png" height="168" width="360" border="0">
+                </a>
+              </li>
+              <li style="display: table-cell; vertical-align: top; width: 1366px;">
+                <a href="http://www.baixingsenlin.com/mobile/affiche.php?ad_id=1&amp;uri=" target="_blank">
+                  <img src="images/banner2.png" height="168" width="360" border="0">
+                </a>
+              </li>
+              <li style="display: table-cell; vertical-align: top; width: 1366px;">
+                <a href="http://www.baixingsenlin.com/mobile/affiche.php?ad_id=1&amp;uri=" target="_blank">
+                  <img src="images/banner3.png" height="168" width="360" border="0">
+                </a>
+              </li>
+               <li style="display: table-cell; vertical-align: top; width: 1366px;">
+                <a href="http://www.baixingsenlin.com/mobile/affiche.php?ad_id=1&amp;uri=" target="_blank">
+                  <img src="images/banner4.png" height="168" width="360" border="0">
+                </a>
+              </li>
+              
+              
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="content" class="wrap">
+        <header class="region">
+          <div class="content">
+            <div id="fake-search">
+              
+            </div>
+          </div>
+        </header>
+        <div class="region row row_category">
+          <ul class="flex flex-f-row">
+            <li class="flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/cat_all.php" title="全部分类">
+                <div class="CarouselImg">
+                  <img src="%E7%99%BE%E5%A7%93%E6%A3%AE%E6%9E%97_files/1443584338752549142.png">
+                </div>
+              </a>
+              <p>全部分类 </p>
+            </li>
+            <li class="flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/user.php" title="个人中心">
+                <div class="CarouselImg">
+                  <img src="%E7%99%BE%E5%A7%93%E6%A3%AE%E6%9E%97_files/1443584373727011961.png">
+                </div>
+              </a>
+              <p>个人中心 </p>
+            </li>
+            <li class="flex_in">
+              <a href="http://www.baixingsenlin.com/wechat/oauth/wxch_oauth.php?oid=24" title="我的订单">
+                <div class="CarouselImg">
+                  <img src="%E7%99%BE%E5%A7%93%E6%A3%AE%E6%9E%97_files/1443585779204202237.png">
+                </div>
+              </a>
+              <p>我的订单 </p>
+            </li>
+          </ul>
+          <ul class="flex flex-f-row">
+            <li class="flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/ectouch.php?act=contact" title="联系我们">
+                <div class="CarouselImg">
+                  <img src="%E7%99%BE%E5%A7%93%E6%A3%AE%E6%9E%97_files/1443586300343329180.png">
+                </div>
+              </a>
+              <p>联系我们 </p>
+            </li>
+            <li class="flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/flow.php" title="购物车">
+                <div class="CarouselImg">
+                  <img src="%E7%99%BE%E5%A7%93%E6%A3%AE%E6%9E%97_files/1443584408064043342.png">
+                </div>
+              </a>
+              <p>购物车 </p>
+            </li>
+            <li class="flex_in">
+              <a href="http://www.baixingsenlin.com/wechat/oauth/wxch_oauth.php?oid=23" title="商家入驻">
+                <div class="CarouselImg">
+                  <img src="%E7%99%BE%E5%A7%93%E6%A3%AE%E6%9E%97_files/1468133409409399600.png">
+                </div>
+              </a>
+              <p>商家入驻 </p>
+            </li>
+          </ul>
+        </div>
+        <div class="blank2"></div>
+        <section class="item_show_box1 box1 region" id="JS_limit_table">
+          <h3>
+            <a target="_top" href="http://www.baixingsenlin.com/mobile/search.php?intro=promotion">
+              <span class="titico"></span>
+              限时特价区
+              <span class="titmore">
+                <b style="font-size:15px;color:green">更多</b>
+              </span>
+            </a>
+          </h3>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=493">
+                <img src="images/text.png" alt="秋冬季新款毛衣女士套头t恤小衫内搭波浪修身v领长袖针织打底衫女 (包邮）">
+              </a>
+              <div style="text-align:center;line-height:1.5rem;">
+                <span class="price_s">
+                  ￥<span>35.80</span>
+                  <b style="color:red;font-size:10px">可用10积分</b>
+                </span>
+                <br>商品名字             
+              </div>
+              <div class="timedjs">
+                <div class="JS_leaveTime" data-timeline="1475136000">
+                  <em>02</em>
+                  天<em>13</em>
+                  时<em>33</em>
+                  分<em>14</em>
+                  秒
+                </div>
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=484">
+                <img src="images/text.png" alt="超可爱毛巾浴巾套装比纯柔软吸水成人男女裹胸浴巾  （包邮）">
+              </a>
+              <div style="text-align:center;line-height:1.5rem;">
+                <span class="price_s">
+                  ￥<span>28.80</span>
+                  <b style="color:red;font-size:10px">可用10积分</b>
+                </span>
+                <br>商品名字           
+              </div>
+              <div class="timedjs">
+                <div class="JS_leaveTime" data-timeline="1475136000">
+                  <em>02</em>
+                  天<em>13</em>
+                  时<em>33</em>
+                  分<em>14</em>
+                  秒
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=486">
+                <img src="images/text.png" alt="老北京足贴养生改善睡眠 美美艾草便秘祛湿去湿气失眠贴50贴&nbsp; （包邮）">
+              </a>
+              <div style="text-align:center;line-height:1.5rem;">
+                <span class="price_s">
+                  ￥<span>36.00</span>
+                  <b style="color:red;font-size:10px">可用8积分</b>
+                </span>
+                <br>商品名字             
+              </div>
+              <div class="timedjs">
+                <div class="JS_leaveTime" data-timeline="1475049600">
+                  <em>01</em>
+                  天<em>13</em>
+                  时<em>33</em>
+                  分<em>14</em>
+                  秒
+                </div>
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=485">
+                <img src="images/text.png" alt="other名蔻 &nbsp;牛奶凝白香氛沐浴露556ml补水保湿滋润持久留香美沐浴乳 &nbsp;(包邮）">
+              </a>
+              <div style="text-align:center;line-height:1.5rem;">
+                <span class="price_s">
+                  ￥<span>20.00</span>
+                  <b style="color:red;font-size:10px">可用5积分</b>
+                </span>
+                <br>商品名字             
+              </div>
+              <div class="timedjs">
+                <div class="JS_leaveTime" data-timeline="1475049600">
+                  <em>01</em>
+                  天<em>13</em>
+                  时<em>33</em>
+                  分<em>14</em>
+                  秒
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=483">
+                <img src="images/text.png" alt="维达超韧纸巾手帕纸4层餐巾纸小包纸巾无香条60包 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center;line-height:1.5rem;">
+                <span class="price_s">
+                  ￥<span>35.50</span>
+                  <b style="color:red;font-size:10px">可用7积分</b>
+                </span>
+                <br>商品名字             
+              </div>
+              <div class="timedjs">
+                <div class="JS_leaveTime" data-timeline="1475136000">
+                  <em>02</em>
+                  天<em>13</em>
+                  时<em>33</em>
+                  分<em>14</em>
+                  秒
+                </div>
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=482">
+                <img src="images/text.png" alt="劲风旋转舞电动会唱歌跳舞智能机器人 （包邮）">
+              </a>
+              <div style="text-align:center;line-height:1.5rem;">
+                <span class="price_s">
+                  ￥<span>33.90</span>
+                  <b style="color:red;font-size:10px">可用8积分</b>
+                </span>
+                <br>商品名字             
+              </div>
+              <div class="timedjs">
+                <div class="JS_leaveTime" data-timeline="1475049600">
+                  <em>01</em>
+                  天<em>13</em>
+                  时<em>33</em>
+                  分<em>14</em>
+                  秒
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row"></div>
+        </section>
+        <div class="blank2"></div>
+        <section class="item_show_box1 box1 region">
+          <h3>
+            <a target="_top" href="http://www.baixingsenlin.com/mobile/search.php?intro=new">
+              <span class="titico"></span>
+              新品上市
+              <span class="titmore">
+                <b style="font-size:15px;color:green">更多</b>
+              </span>
+            </a>
+          </h3>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=456">
+                <img src="images/text.png" alt="萌狗扭扭车滑行车摇摆车音乐灯光四轮滑行车1-2岁 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <span class="price_s">
+                  ￥<span>55.00</span>
+                  <b style="color:red;font-size:10px">可用11积分</b>
+                </span>
+                <br>商品名字            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=453">
+                <img src="images/text.png" alt="齐心办公用品时尚太阳能计算机双电源12位数多功能计算器财务专用 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <span class="price_s">
+                  ￥<span>12.90</span>
+                  <b style="color:red;font-size:10px">可用3积分</b>
+                </span>
+                <br>商品名字              
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=452">
+                <img src="images/text.png" alt="帅威手持蒸汽挂烫机家用电熨斗迷你蒸汽刷熨烫机小型烫斗顺衣神器 &nbsp;(包邮）">
+              </a>
+              <div style="text-align:center">
+                <span class="price_s">
+                  ￥<span>99.00</span>
+                  <b style="color:red;font-size:10px">可用10积分</b>
+                </span>
+                <br>商品名字              
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=282">
+                <img src="images/text.png" alt="华佗杀菌古皂纯天然手工皂美白祛痘去黑头洁面洗脸保湿精油香皂 （一组2个）包邮">
+              </a>
+              <div style="text-align:center">
+                <span class="price_s">
+                  ￥<span>128.00</span>
+                  <b style="color:red;font-size:10px">可用40积分</b>
+                </span>
+                <br>商品名字              
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=442">
+                <img src="images/text.png" alt="免手洗平托拖把 懒人拖把 旋转平拖自动清洗刮刀扫把 &nbsp; （包邮）">
+              </a>
+              <div style="text-align:center">
+                <span class="price_s">
+                  ￥<span>38.00</span>
+                  <b style="color:red;font-size:10px">可用13积分</b>
+                </span>
+                <br>商品名字              
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=396">
+                <img src="images/text.png" alt="蓓和车家两用护理机 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <span class="price_s">
+                  ￥<span>128.00</span>
+                  <b style="color:red;font-size:10px">可用28积分</b>
+                </span>
+                <br>商品名字              
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row"></div>
+        </section>
+        <div class="blank2"></div>
+        <section class="item_show_box1 box1 region">
+          <h3>
+            <a target="_top" href="http://www.baixingsenlin.com/mobile/search.php?intro=best">
+              <span class="titico"></span>
+              精品推荐
+              <span class="titmore">
+                <b style="font-size:15px;color:green">更多</b>
+              </span>
+            </a>
+          </h3>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=256">
+                <img src="images/text.png" alt="Guermas 香港娇玛仕 水光莹润玻尿酸原液一盒 &nbsp;包邮">
+              </a>
+              <div style="text-align:center">
+                <!-- <p class="c999"><del>市场价:￥<span>288.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>28.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用140积分</b>
+                <br>商品名字           
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=281">
+                <img src="images/text.png" alt="泊泉雅去黑头三步曲 T区护肤套装 &nbsp;黑头导出液 鼻贴撕拉式 &nbsp;鼻膜 &nbsp; （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- <p class="c999"><del>市场价:￥<span>14.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>10.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用4积分</b>
+                <br>商品名字            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=457">
+                <img src="images/text.png" alt="迪童儿童三轮车脚踏车儿童自行车 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- <p class="c999"><del>市场价:￥<span>61.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>41.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用16积分</b>
+                <br>商品名字          
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=455">
+                <img src="images/text.png" alt="OPPDQCN欧派盛世 定时燃气灶双灶台天然气液化气 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- <p class="c999"><del>市场价:￥<span>429.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>49.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用30积分</b>
+                <br>商品名字          
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=454">
+                <img src="images/text.png" alt="兔兔TUTU新生儿宽口玻璃奶瓶带手柄吸管婴儿奶瓶防胀气 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- <p class="c999"><del>市场价:￥<span>69.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>49.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用10积分</b>
+                <br>商品名字           
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=248">
+                <img src="images/text.png" alt="雀巢咖啡醇品100g+伴侣100g 速溶咖啡 包邮">
+              </a>
+              <div style="text-align:center">
+                <!-- <p class="c999"><del>市场价:￥<span>57.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>57.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用13积分</b>
+                <br>商品名字.            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row"></div>
+        </section>
+        <div class="blank2"></div>
+        
+        
+        <div class="blank2"></div>
+        <section class="item_show_box1 box1 region">
+          <h3>
+            <a target="_top" href="http://www.baixingsenlin.com/mobile/category.php?id=150">
+              <span class="titico"></span>
+              化妆品/个人护理
+              <span class="titmore">
+                <b style="font-size:15px;color:green">更多</b>
+              </span>
+            </a>
+          </h3>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=473">
+                <img src="images/text.png" alt="思埠黛莱美bb霜焕彩水润无暇bb霜保湿裸妆遮瑕强控油白皙25ml （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>158.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>158.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用68积分</b>
+                <br>商品名字           
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=472">
+                <img src="images/text.png" alt="思埠黛戴莱美焕彩净润洗面奶男女补水卸妆泡沫 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>98.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>98.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用38积分</b>
+                <br>商品名字            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=471">
+                <img src="images/text.png" alt="韩束墨菊深度补水五件套装精华素洁面乳液凝露BB眼霜倍润礼盒 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>298.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>18.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用118积分</b>
+                <br>商品名字
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=470">
+                <img src="images/text.png" alt="满婷中华神皂清洁香皂洗脸精油皂洁面皂60g （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>128.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>28.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用58积分</b>
+                <br>商品名字           
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=467">
+                <img src="images/text.png" alt="天使之魅蓝莓面膜 欧蒂芙奇迹面膜超薄黛莱美思埠祛斑去印 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>198.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>198.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用98积分</b>
+                <br>商品名字
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=234">
+                <img src="images/text.png" alt="闺蜜面包（湿巾款）礼盒装 包邮">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>85.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>85.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用30积分</b>
+                <br>商品名字            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=236">
+                <img src="images/text.png" alt="闺蜜面包（面膜款）礼盒装   包邮">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>85.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>85.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用30积分</b>
+                <br>商品名字          
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=235">
+                <img src="images/text.png" alt="闺蜜面包（护垫款）礼盒装  包邮">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>85.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>85.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用30积分</b>
+                <br>商品名字           
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row"></div>
+          <div class="item_tags clearfix">
+            <a href="http://www.baixingsenlin.com/mobile/category.php?id=153">个人护理        </a>
+            <a href="http://www.baixingsenlin.com/mobile/category.php?id=167">化妆品        </a>
+          </div>
+        </section>
+        <div class="blank2"></div>
+        <section class="item_show_box1 box1 region">
+          <h3>
+            <a target="_top" href="http://www.baixingsenlin.com/mobile/category.php?id=143">
+              <span class="titico"></span>
+              日用品
+              <span class="titmore">
+                <b style="font-size:15px;color:green">更多</b>
+              </span>
+            </a>
+          </h3>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=257">
+                <img src="images/text.png" alt="创意爆款小黑伞晴雨伞1把 包邮">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>36.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>36.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用15积分</b>
+                <br>商品名字           
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=68">
+                <img src="images/text.png" alt="汉高牙膏2支（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>65.88</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>54.90</span>
+                </span>
+                <b style="color:red;font-size:10px">可用15积分</b>
+                <br>商品名字       
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=300">
+                <img src="images/text.png" alt="玖森2号高档羽毛球 耐打稳定 省队训练球1桶（12支装）包邮">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>48.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>48.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用8积分</b>
+                <br>商品名字            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=296">
+                <img src="images/text.png" alt="SPEKING斯佩客双仞10羽毛球拍全碳素超轻碳纤维羽拍1支 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>98.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>98.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用43积分</b>
+                <br>商品名字            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=263">
+                <img src="images/text.png" alt="小清新单层家务手套 （3对） 6色 包邮">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>26.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>26.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用13积分</b>
+                <br>商品名字           
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=259">
+                <img src="images/text.png" alt="卡通不锈钢子弹头保温杯 500ml 1个 包邮">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>20.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>20.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用5积分</b>
+                <br>商品名字           
+              </div>
+            </div>
+          </div>
+          
+          
+          
+        </section>
+        <div class="blank2"></div>
+        <section class="item_show_box1 box1 region">
+          <h3>
+            <a target="_top" href="http://www.baixingsenlin.com/mobile/category.php?id=141">
+              <span class="titico"></span>
+              农产品
+              <span class="titmore">
+                <b style="font-size:15px;color:green">更多</b>
+              </span>
+            </a>
+          </h3>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=81">
+                <img src="images/text.png" alt="土蜂蜜">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>69.60</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>58.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用20积分</b>
+                <br>商品名字           
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=80">
+                <img src="images/text.png" alt="龙眼蜜">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>69.60</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>58.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用20积分</b>
+                <br>龙眼蜜            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=79">
+                <img src="images/text.png" alt="百花蜜">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>93.60</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>78.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用30积分</b>
+                <br>百花蜜            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=78">
+                <img src="images/text.png" alt="槐花蜜">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>70.80</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>59.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用20积分</b>
+                <br>槐花蜜            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row"></div>
+          <div class="item_tags clearfix">
+            <a href="http://www.baixingsenlin.com/mobile/category.php?id=166">蜂蜜        </a>
+          </div>
+        </section>
+        <div class="blank2"></div>
+        <section class="item_show_box1 box1 region">
+          <h3>
+            <a target="_top" href="http://www.baixingsenlin.com/mobile/category.php?id=149">
+              <span class="titico"></span>
+              数码/电子电器
+              <span class="titmore">
+                <b style="font-size:15px;color:green">更多</b>
+              </span>
+            </a>
+          </h3>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=482">
+                <img src="images/text.png" alt="劲风旋转舞电动会唱歌跳舞智能机器人 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>46.90</span></del></p> -->
+                <span class="price_s">
+                  ￥<span>33.90</span>
+                </span>
+                <b style="color:red;font-size:10px">可用8积分</b>
+                <br>劲风旋转舞电动会唱歌跳舞...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=462">
+                <img src="images/text.png" alt="韩国现代养生壶全自动加厚玻璃多功能煎药壶煮茶器 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>129.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>129.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用20积分</b>
+                <br>韩国现代养生壶全自动加厚...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=458">
+                <img src="images/text.png" alt="港德海豚按摩棒电动颈椎按摩器颈部腰部腿部多功能全身敲打按摩捶  (包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>399.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>84.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用15积分</b>
+                <br>港德海豚按摩棒电动颈椎按...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=452">
+                <img src="images/text.png" alt="帅威手持蒸汽挂烫机家用电熨斗迷你蒸汽刷熨烫机小型烫斗顺衣神器 &nbsp;(包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>99.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>99.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用10积分</b>
+                <br>帅威手持蒸汽挂烫机家用电...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=451">
+                <img src="images/text.png" alt="新威尔机械战警儿童遥控机器人玩具 智能手势跳舞充电动盈佳6088 (包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>238.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>238.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用30积分</b>
+                <br>新威尔机械战警儿童遥控机...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=398">
+                <img src="images/text.png" alt="蓓和颈肩乐按摩披肩 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>98.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>98.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用23积分</b>
+                <br>蓓和颈肩乐按摩披肩 &nbsp;（...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=397">
+                <img src="images/text.png" alt="蓓和温热揉捏按摩披肩 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>168.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>168.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用58积分</b>
+                <br>蓓和温热揉捏按摩披肩 &nbsp;...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=396">
+                <img src="images/text.png" alt="蓓和车家两用护理机 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>128.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>128.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用28积分</b>
+                <br>蓓和车家两用护理机 （包...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row"></div>
+          <div class="item_tags clearfix">
+         <!--   <a href="http://www.baixingsenlin.com/mobile/category.php?id=151">生活家电        </a>
+            <a href="http://www.baixingsenlin.com/mobile/category.php?id=152">手机数码        </a>
+            <a href="http://www.baixingsenlin.com/mobile/category.php?id=168">电子产品        </a>-->
+          </div>
+        </section>
+        <div class="blank2"></div>
+        <section class="item_show_box1 box1 region">
+          <h3>
+            <a target="_top" href="http://www.baixingsenlin.com/mobile/category.php?id=176">
+              <span class="titico"></span>
+              床上用品
+              <span class="titmore">
+                <b style="font-size:15px;color:green">更多</b>
+              </span>
+            </a>
+          </h3>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=441">
+                <img src="images/text.png" alt="2016秋冬纯色双拼  四件套  （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>450.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>450.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用144积分</b>
+                <br>2016秋冬纯色双拼  ...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=440">
+                <img src="images/text.png" alt="2016秋冬纯色双拼 &nbsp;四件套 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>480.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>480.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用155积分</b>
+                <br>2016秋冬纯色双拼 &nbsp;...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=439">
+                <img src="images/text.png" alt="2016秋冬纯色双拼 &nbsp;四件套 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>480.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>480.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用154积分</b>
+                <br>2016秋冬纯色双拼 &nbsp;...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=438">
+                <img src="images/text.png" alt="2016秋冬纯色双拼 &nbsp;三件套 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>420.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>420.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用134积分</b>
+                <br>2016秋冬纯色双拼 &nbsp;...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=437">
+                <img src="images/text.png" alt="秋冬新品斑马纹纯色双拼系列 &nbsp;床笠款四件套 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>159.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>159.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用74积分</b>
+                <br>秋冬新品斑马纹纯色双拼系...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=436">
+                <img src="images/text.png" alt="秋冬新品斑马纹纯色双拼系列 &nbsp;床笠款四件套 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>159.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>159.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用74积分</b>
+                <br>秋冬新品斑马纹纯色双拼系...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=435">
+                <img src="images/text.png" alt="秋冬新品斑马纹纯色双拼系列 &nbsp;床罩款四件套 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>168.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>168.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用70积分</b>
+                <br>秋冬新品斑马纹纯色双拼系...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=434">
+                <img src="images/text.png" alt="秋冬新品斑马纹纯色双拼系列 &nbsp;床罩款四件套 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>168.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>168.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用70积分</b>
+                <br>秋冬新品斑马纹纯色双拼系...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row"></div>
+          <div class="item_tags clearfix"></div>
+        </section>
+        <div class="blank2"></div>
+        <section class="item_show_box1 box1 region">
+          <h3>
+            <a target="_top" href="http://www.baixingsenlin.com/mobile/category.php?id=172">
+              <span class="titico"></span>
+              鞋帽/饰品
+              <span class="titmore">
+                <b style="font-size:15px;color:green">更多</b>
+              </span>
+            </a>
+          </h3>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=500">
+                <img src="images/text.png" alt="日韩简约水滴项链短款时尚毛衣链时尚锁骨链 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>35.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>29.80</span>
+                </span>
+                <b style="color:red;font-size:10px">可用10积分</b>
+                <br>日韩简约水滴项链短款时尚...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=499">
+                <img src="images/text.png" alt="韩国甜美花朵百搭项链时尚毛衣链短锁骨链装饰项链项饰挂件首饰女 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>38.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>31.80</span>
+                </span>
+                <b style="color:red;font-size:10px">可用13积分</b>
+                <br>韩国甜美花朵百搭项链时尚...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=498">
+                <img src="images/text.png" alt="日韩女项链百搭短款毛衣链装饰挂件首饰饰品衣服配饰连衣裙项饰 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>42.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>35.80</span>
+                </span>
+                <b style="color:red;font-size:10px">可用16积分</b>
+                <br>日韩女项链百搭短款毛衣链...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=497">
+                <img src="images/text.png" alt="日韩气质百搭毛衣链吊坠甜美短款锁骨链衣服配饰品装饰项链女挂件 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>28.80</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>28.80</span>
+                </span>
+                <b style="color:red;font-size:10px">可用13积分</b>
+                <br>日韩气质百搭毛衣链吊坠甜...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=496">
+                <img src="images/text.png" alt="日韩女项链甜美连衣裙配饰百搭锁骨链饰品短款毛衣链装饰配件首饰 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>31.80</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>31.80</span>
+                </span>
+                <b style="color:red;font-size:10px">可用12积分</b>
+                <br>日韩女项链甜美连衣裙配饰...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=495">
+                <img src="images/text.png" alt="日韩女项链水滴气质百搭锁骨链短款毛衣链连衣裙项链配饰饰品 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>31.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>31.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用10积分</b>
+                <br>日韩女项链水滴气质百搭锁...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=494">
+                <img src="images/text.png" alt="日韩锁骨项链欧美饰品夸张项链女配饰锁骨链装饰项链 (包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>25.80</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>25.80</span>
+                </span>
+                <b style="color:red;font-size:10px">可用8积分</b>
+                <br>日韩锁骨项链欧美饰品夸张...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=479">
+                <img src="images/text.png" alt="2016韩版秋季新款一脚蹬隐形内增高小白鞋女厚底单潮鞋 (包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>88.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>88.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用12积分</b>
+                <br>2016韩版秋季新款一脚...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row"></div>
+          <div class="item_tags clearfix">
+           <!-- <a href="http://www.baixingsenlin.com/mobile/category.php?id=173">饰品        </a>
+            <a href="http://www.baixingsenlin.com/mobile/category.php?id=174">鞋帽        </a>-->
+          </div>
+        </section>
+        <div class="blank2"></div>
+        <section class="item_show_box1 box1 region">
+          <h3>
+            <a target="_top" href="http://www.baixingsenlin.com/mobile/category.php?id=154">
+              <span class="titico"></span>
+              皮具/箱包
+              <span class="titmore">
+                <b style="font-size:15px;color:green">更多</b>
+              </span>
+            </a>
+          </h3>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=460">
+                <img src="images/text.png" alt="潜水料儿童书包 幼儿园卡通双肩背包动物书包 幼儿防水包 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>88.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>88.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用30积分</b>
+                <br>潜水料儿童书包 幼儿园卡...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=459">
+                <img src="images/text.png" alt="小黄人儿童书包儿童硬壳卡通双肩包 &nbsp;（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>68.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>68.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用23积分</b>
+                <br>小黄人儿童书包儿童硬壳卡...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=423">
+                <img src="images/text.png" alt="KT猫拉杆箱卡通旅行箱abs行李箱子登机箱托运箱 &nbsp;28寸 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>194.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>194.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用72积分</b>
+                <br>KT猫拉杆箱卡通旅行箱a...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=422">
+                <img src="images/text.png" alt="KT猫拉杆箱卡通旅行箱abs行李箱子登机箱托运箱 &nbsp;24寸 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>164.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>164.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用57积分</b>
+                <br>KT猫拉杆箱卡通旅行箱a...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=421">
+                <img src="images/text.png" alt="KT猫拉杆箱卡通旅行箱abs行李箱子登机箱托运箱 20寸（包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>134.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>134.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用42积分</b>
+                <br>KT猫拉杆箱卡通旅行箱a...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=420">
+                <img src="images/text.png" alt="Kitty灰边凯蒂猫拉杆箱旅行箱行李箱登机箱拉杆万向轮 28寸 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>188.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>188.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用69积分</b>
+                <br>Kitty灰边凯蒂猫拉杆...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row">
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=419">
+                <img src="images/text.png" alt="Kitty灰边凯蒂猫拉杆箱旅行箱行李箱登机箱拉杆万向轮 24寸 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>158.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>158.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用54积分</b>
+                <br>Kitty灰边凯蒂猫拉杆...            
+              </div>
+            </div>
+            <div class="goodsItem flex_in">
+              <a href="http://www.baixingsenlin.com/mobile/goods.php?id=418">
+                <img src="images/text.png" alt="Kitty灰边凯蒂猫拉杆箱旅行箱行李箱登机箱拉杆万向轮 20寸 （包邮）">
+              </a>
+              <div style="text-align:center">
+                <!-- LJC delete <p class="c999"><del>市场价:￥<span>128.00</span></del></p>-->
+                <span class="price_s">
+                  ￥<span>128.00</span>
+                </span>
+                <b style="color:red;font-size:10px">可用39积分</b>
+                <br>Kitty灰边凯蒂猫拉杆...            
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-f-row"></div>
+          <div class="item_tags clearfix">
+          <!--  <a href="http://www.baixingsenlin.com/mobile/category.php?id=155">皮具        </a>
+            <a href="http://www.baixingsenlin.com/mobile/category.php?id=156">箱包        </a>-->
+          </div>
+        </section>
+       
+
+       
+    
+      <div id="content" class="footer mr-t20">
+       <!-- <div class="in">
+          <div class="search_box">
+            <form method="post" action="search.php" name="searchForm" id="searchForm_id">
+              <input name="keywords" id="keywordfoot" type="text">
+              <button class="ico_07" type="submit" value="搜索" onclick="return check('keywordfoot')"></button>
+            </form>
+          </div>
+          <a href="http://www.baixingsenlin.com/mobile/" class="homeBtn">
+            <span class="ico_05"></span>
+          </a>
+          <a href="#top" class="gotop">
+            <span class="ico_06"></span>
+            <p>TOP </p>
+          </a>
+        </div>-->
+        <p class="link region">
+          <a href="http://www.baixingsenlin.com/mobile/">返回首页 </a>
+          <a href="http://www.baixingsenlin.com/mobile/flow.php">购物车 </a>
+          <a href="http://www.baixingsenlin.com/mobile/user.php">会员中心 </a>
+          <a href="http://www.baixingsenlin.com/mobile/ectouch.php?act=contact">联系我们 </a>
+        </p>
+        <p class="region">
+          ICP备案证书号: <a href="http://www.miibeian.gov.cn/" target="_blank">闽ICP备16014629号-1 </a>
+        </p>
+        <p>© 年份  我的公司  版权所有，并保留所有权利。 </p>
+        <!--
+  <div class="favLink region"> <a href="http://www.ocailong.com"> powered by O菜龙工作室 </a> </div>-->
+      </div>
+      <div class="global-nav">
+        <div class="global-nav__nav-wrap">
+          <div class="global-nav__nav-item">
+            <a href="http://www.baixingsenlin.com/mobile/" class="global-nav__nav-link">
+              <i class="global-nav__iconfont global-nav__icon-index">󰀁</i>
+              <span class="global-nav__nav-tit">首页</span>
+            </a>
+          </div>
+          <div class="global-nav__nav-item">
+            <a href="http://www.baixingsenlin.com/mobile/cat_all.php" class="global-nav__nav-link">
+              <i class="global-nav__iconfont global-nav__icon-category">󰀂</i>
+              <span class="global-nav__nav-tit">分类</span>
+            </a>
+          </div>
+          <div class="global-nav__nav-item">
+            <a href="javascript:get_search_box();" class="global-nav__nav-link">
+              <i class="global-nav__iconfont global-nav__icon-search">󰀃</i>
+              <span class="global-nav__nav-tit">搜索</span>
+            </a>
+          </div>
+          <div class="global-nav__nav-item">
+            <a href="http://www.baixingsenlin.com/mobile/flow.php?step=cart" class="global-nav__nav-link">
+              <i class="global-nav__iconfont global-nav__icon-shop-cart">󰀄</i>
+              <span class="global-nav__nav-tit">购物车</span>
+              <span class="global-nav__nav-shop-cart-num" id="carId">0</span>
+            </a>
+          </div>
+          <div class="global-nav__nav-item">
+            <a href="http://www.baixingsenlin.com/mobile/user.php" class="global-nav__nav-link">
+              <i class="global-nav__iconfont global-nav__icon-my-yhd">󰀅</i>
+              <span class="global-nav__nav-tit">会员中心</span>
+            </a>
+          </div>
+        </div>
+        <div class="global-nav__operate-wrap">
+          <span class="global-nav__yhd-logo"></span>
+          <span class="global-nav__operate-cart-num" id="globalId">0</span>
+        </div>
+      </div>
+      <div id="toTop" class="toTop" style="display: block;">
+        <img alt="" src="css/scropTop.png">
+      </div>
+      <div id="main-search" class="main-search">
+        <div class="hd">
+          <span class="ico_08 close">关闭 </span>
+        </div>
+        <div class="bd">
+          <div class="search_box">
+            <form action="search.php" method="post" id="searchForm" name="searchForm">
+              <div class="content">
+                <input class="text" name="keywords" id="keywordBox" autofocus="" type="search">
+                <button class="ico_07" type="submit" value="搜 索" onclick="return check('keywordBox')"></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      
+TouchSlide({ 
+	slideCell:"#focus",
+	titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+	mainCell:".bd ul", 
+	effect:"leftLoop", 
+	autoPlay:true,//自动播放
+	autoPage:true //自动分页
+});
+
+    </script>
+    <script>
+      $(function() {
+        isIe6 = false;
+        if ('undefined' == typeof (document.body.style.maxHeight)) {
+          isIe6 = true;
+        }
+        var offset = $("#toTop").offset();
+        var bottom = $("#toTop").css("bottom");
+        $(window).scroll(function() {
+          if ($(window).scrollTop() > 500) {
+            $("#toTop").fadeIn(800);
+            if (isIe6) {
+              $("#toTop").css("position", "absolute")
+              $("#toTop").css("bottom", bottom)
+            }
+          } else {
+            $("#toTop").fadeOut(500);
+          }
+        });
+        $("#toTop").click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          }, 500);
+          return false;
+        });
+      })
+    </script>
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script type="text/javascript">
+      
+Zepto(function($){
+   var $nav = $('.global-nav'), $btnLogo = $('.global-nav__operate-wrap');
+   //点击箭头，显示隐藏导航
+   $btnLogo.on('click',function(){
+     if($btnLogo.parent().hasClass('global-nav--current')){
+       navHide();
+     }else{
+       navShow();
+     }
+   });
+   var navShow = function(){
+     $nav.addClass('global-nav--current');
+   }
+   var navHide = function(){
+     $nav.removeClass('global-nav--current');
+   }
+   
+})
+function get_search_box(){
+	try{
+		document.getElementById('get_search_box').click();
+	}catch(err){
+		document.getElementById('keywordfoot').focus();
+ 	}
+}
+
+    </script>
+    <script type="text/javascript">
+      
+window.onload = function(){
+  $('#menu').css('display','');
+}
+$(function() {
+	$('nav#menu').mmenu();
+	$('#get_search_box').click(function(){
+		$(".mm-page").children('div').hide();
+		$("#main-search").css('position','fixed').css('top','0px').css('width','100%').css('z-index','999').show();
+		//$('#keywordBox').focus();
+	})
+	$("#main-search .close").click(function(){
+		$(".mm-page").children('div').show();
+		$("#main-search").hide();
+	})
+});
+
+    </script>
+    <script src="%E7%99%BE%E5%A7%93%E6%A3%AE%E6%9E%97_files/jweixin-1.js"></script>
+    <script>
+      wx.config({
+        debug: false,
+        appId: 'wx4177d4551249e6d0',
+        timestamp: 1474943138,
+        nonceStr: 'NmaDnp4NWI1Rbjpd',
+        signature: '9267e367d386b207597680ab808ca2377b84a7e7',
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+      });
+      wx.ready(function() {
+        //模板之家监听“分享给朋友”
+        wx.onMenuShareAppMessage({
+          title: '',
+          desc: '',
+          link: '',
+          imgUrl: '',
+          trigger: function(res) {
+            alert('糟糕，需要分销商登录才能获得提成哦！');
+          },
+          success: function(res) {},
+          cancel: function(res) {
+            alert('很遗憾，您已取消分享');
+          },
+          fail: function(res) {
+            alert(JSON.stringify(res));
+          }
+        });
+        //分享到朋友圈模板之家
+        wx.onMenuShareTimeline({
+          title: '',
+          link: '',
+          imgUrl: '',
+          trigger: function(res) {
+            alert('糟糕，需要分销商登录才能获得提成哦！');
+          },
+          success: function(res) {},
+          cancel: function(res) {
+            alert('很遗憾，您已取消分享');
+          },
+          fail: function(res) {
+            alert(JSON.stringify(res));
+          }
+        });
+      });
+    </script>
+    <div id="mm-blocker" style="opacity: 0;"></div>
+  </body>
+</html>
